@@ -13,13 +13,13 @@ export class OperationCreator {
         }
     ) {}
 
-    create() {
+    create(): IOperation {
         return {
             id: uniqid(),
-            level: this.data.Level,
+            level: parseInt(this.data.Level),
             name: this.data.Name,
-            start: this.data.StartData,
-            fin: this.data.FinData,
+            start: Date.parse(this.data.StartData),
+            fin: Date.parse(this.data.FinData),
             duration: Date.parse(this.data.FinData) - Date.parse(this.data.StartData),
             elements: this.data.Elements
         }
