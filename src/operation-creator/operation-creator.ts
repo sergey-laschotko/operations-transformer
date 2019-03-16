@@ -10,18 +10,18 @@ export class OperationCreator {
             StartData: string;
             FinData: string;
             Elements: string[]
-        }
+        },
     ) {}
 
-    create(): IOperation {
+    public create(): IOperation {
         return {
+            duration: Date.parse(this.data.FinData) - Date.parse(this.data.StartData),
+            elements: this.data.Elements,
+            fin: Date.parse(this.data.FinData),
             id: uniqid(),
-            level: parseInt(this.data.Level),
+            level: parseInt(this.data.Level, 10) ? parseInt(this.data.Level, 10) : null,
             name: this.data.Name,
             start: Date.parse(this.data.StartData),
-            fin: Date.parse(this.data.FinData),
-            duration: Date.parse(this.data.FinData) - Date.parse(this.data.StartData),
-            elements: this.data.Elements
-        }
+        };
     }
 }
