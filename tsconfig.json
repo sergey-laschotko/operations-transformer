@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
         "module": "commonjs",
+        "target": "es5",
         "noImplicitAny": true,
         "removeComments": true,
-        "outDir": "build"
+        "outDir": "build",
+        "resolveJsonModule": true,
     },
     "include": [
         "src/**/*"

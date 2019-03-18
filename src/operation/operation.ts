@@ -1,15 +1,23 @@
 import { IOperation } from "../interfaces/operation";
 
 export class Operation implements IOperation {
-    constructor(
-        public id: string,
-        public level: number,
-        public name: string,
-        public start: number,
-        public fin: number,
-        public duration: number,
-        public elements: string[],
-    ) {}
+    public id: string;
+    public level: number;
+    public name: string;
+    public start: number;
+    public fin: number;
+    public duration: number;
+    public elements: string[];
+
+    constructor(data: IOperation) {
+        this.id = data.id;
+        this.level = data.level;
+        this.name = data.name;
+        this.start = data.start;
+        this.fin = data.fin;
+        this.duration = data.duration;
+        this.elements = data.elements;
+    }
 
     public getOperation() {
         return {

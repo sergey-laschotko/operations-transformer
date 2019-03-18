@@ -13,15 +13,23 @@ export class OperationCreator {
         },
     ) {}
 
+    getDateMs(date: string) {
+        let dateParts = date
+            .split(/(\.|:|\s)/)
+            .map(p => parseInt(p))
+            .filter(p => p > -1);
+        return +new Date(dateParts[2], dateParts[1] - 1, dateParts[0], dateParts[3], dateParts[4]);
+    }
+
     public create(): IOperation {
         return {
-            duration: Date.parse(this.data.FinData) - Date.parse(this.data.StartData),
+            duration: this.getDateMs(this.data.FinData) - this.getDateMs(this.data.StartData),
             elements: this.data.Elements,
-            fin: Date.parse(this.data.FinData),
+            fin: this.getDateMs(this.data.FinData),
             id: uniqid(),
             level: parseInt(this.data.Level, 10) ? parseInt(this.data.Level, 10) : null,
             name: this.data.Name,
-            start: Date.parse(this.data.StartData),
+            start: this.getDateMs(this.data.StartData),
         };
     }
 }
