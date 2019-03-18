@@ -4,4 +4,4 @@ export interface IInitialOperation {
     StartData: string;
     FinData: string;
     Elements: string[];
-};
+}

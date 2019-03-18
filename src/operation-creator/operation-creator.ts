@@ -13,11 +13,11 @@ export class OperationCreator {
         },
     ) {}
 
-    getDateMs(date: string) {
-        let dateParts = date
+    public getDateMs(date: string) {
+        const dateParts = date
             .split(/(\.|:|\s)/)
-            .map(p => parseInt(p))
-            .filter(p => p > -1);
+            .map((p: string) => parseInt(p, 10))
+            .filter((p: number) => p > -1);
         return +new Date(dateParts[2], dateParts[1] - 1, dateParts[0], dateParts[3], dateParts[4]);
     }
 
